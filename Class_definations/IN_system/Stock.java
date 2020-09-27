@@ -11,13 +11,13 @@ class stock{
 	int Quantity;
 	int Supplier_Id;
 	
-	create_stock(){
+	stock(){
 		Product_Id = 0;
 		Quantity = 0;
 		Supplier_Id = 0;
 	}
 	
-	create_stock(int pid , int quan , int sid){
+	stock(int pid , int quan , int sid){
 		Product_Id = pid;
 		Quantity = quan;
 		Supplier_Id = sid;
