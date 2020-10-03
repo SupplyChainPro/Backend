@@ -6,37 +6,49 @@ class Supplier {
 	
 	// class attributes 
 	
-	int Supplier_ID;
-	String Supplier_Name;
-	String Supplier_Address;
-	int phone_No;
-	
-	// class function 
-	
-	
-	public Supplier() {
-		Supplier_ID = 0;
-	}
-    
-	
-	public void AddSupplier(int ID, String Name, String Address, int PhoneNO) {
+		long Supplier_ID;
+		String Supplier_Name;
+		String Supplier_Address;
+		long phone_No;
 		
-		 // Database Add operation
- 
-	}
-	
-	public void EditSupplier(int ID, String Name, String Address, int PhoneNO) {
+		// class function 
 		
-		 // database edit operation
- 
-	}
-	
-	public void DeleteSupplier(int ID) {
 		
-		 // database delete operation
+		public Supplier() {
+			Supplier_ID = 0;
+		}
+	    
+		
+		public void AddSupplier(long ID, String Name, String Address, long PhoneNO) {
+			
+			 
+			Supplier_ID = ID;
+			Supplier_Name = Name;
+			Supplier_Address = Address;
+			phone_No = PhoneNO;
+			
+	 
+		}
+		
+		public void EditSupplier(long ID, String Name, String Address, long PhoneNO) {
+			
+			 
+			Supplier_ID = ID;
+			Supplier_Name = Name;
+			Supplier_Address = Address;
+			phone_No = PhoneNO;
+	 
+		}
+		
+		public void DeleteSupplier(long ID) {
+			
+			Supplier_ID = 0;
+			Supplier_Name = "";
+			Supplier_Address =  "";
+			phone_No = 0;
+
+		}
+		
+		
 
 	}
-	
-	
-
-}
