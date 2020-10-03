@@ -6,10 +6,10 @@ class Customer {
 	
 	// class attributes 
 	
-	int Customer_ID;
+	long Customer_ID;
 	String Customer_Name;
 	String Customer_Address;
-	int phone_No;
+	long phone_No;
 	
 	// class function 
 	
@@ -19,24 +19,39 @@ class Customer {
 	}
     
 	
-	public void AddCustomer(int ID, String Name, String Address, int PhoneNO) {
+	public void AddCustomer(long ID, String Name, String Address, long PhoneNO) {
 		
-		 // Database Add operation
+		 
+		Customer_ID = ID;
+		Customer_Name = Name;
+		Customer_Address = Address;
+		phone_No = PhoneNO;
+		
  
 	}
 	
-	public void EditCustomer(int ID, String Name, String Address, int PhoneNO) {
+	public void EditCustomer(long ID, String Name, String Address, long PhoneNO) {
 		
-		 // database edit operation
+		 
+		Customer_ID = ID;
+		Customer_Name = Name;
+		Customer_Address = Address;
+		phone_No = PhoneNO;
  
 	}
-	
-	public void DeleteCustomer(int ID) {
+	 
+	public void DeleteCustomer(long ID) {
 		
-		 // database delete operation
+		Customer_ID = 0;
+		Customer_Name = "";
+		Customer_Address =  "";
+		phone_No = 0;
 
 	}
 	
 	
 
 }
+
+
+
