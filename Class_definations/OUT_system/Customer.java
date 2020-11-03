@@ -54,12 +54,9 @@ class Customer {
 	public void EditCustomer(long ID, String Name, String Address, long PhoneNO) {
 		
 		 //Conect to database via JDBC
-		//Check if customer exists
-			//if yes
 				//let customer edit the info
 				//update in database
-			//if no
-				//retrieve with error msg "customer doesn't exist"
+		
 		Customer_ID = ID;
 		Customer_Name = Name;
 		Customer_Address = Address;
@@ -71,10 +68,9 @@ class Customer {
 		
 		//Conect to database via JDBC
 		//Check if customer exists
-			//if yes
-				//delete the customer from database
-			//if no
-				//retrieve with error msg "customer doesn't exist"
+			//delete the customer from database
+			//update database
+			
 		Customer_ID = ID;
 		
 		Customer_ID = 0;
