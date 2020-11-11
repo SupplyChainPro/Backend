@@ -25,7 +25,7 @@ class Customer {
 	}
     
 	
-	public void AddCustomer(long c_ID, String Name, String Address, long PhoneNO) {
+	public int AddCustomer(long c_ID, String Name, String Address, long PhoneNO) {
 		
 		//connect to database
 		String Conn_URL = "";
@@ -70,7 +70,7 @@ class Customer {
 	} 
 	
 	//To Validate customer login
-	public void validate(long c_ID , String password){
+	public int validate(long c_ID , String password){
 	
 		int var = find_id(c_ID);
     	//if id found in database
@@ -101,7 +101,7 @@ class Customer {
     	}
 	
 	
-	public void EditCustomer(long c_ID, String Name, String Address, long PhoneNO) {
+	public int EditCustomer(long c_ID, String Name, String Address, long PhoneNO) {
 		
 		 int var = find_id(c_ID);
     	
@@ -133,7 +133,7 @@ class Customer {
 	   
 	}
 	 
-	public void DeleteCustomer(long c_ID) {
+	public int DeleteCustomer(long c_ID) {
 		
 		int var = find_id(c_ID);
     	
