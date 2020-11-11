@@ -103,7 +103,7 @@ class Customer {
 	
 	public void EditCustomer(long c_ID, String Name, String Address, long PhoneNO) {
 		
-		 nt var = find_id(c_ID);
+		 int var = find_id(c_ID);
     	
 		if (var) {
 
