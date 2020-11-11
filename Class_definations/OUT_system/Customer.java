@@ -1,5 +1,8 @@
 package OUT_system;
+package DB_Utilities:
 
+import java.sql.*; 
+import DB_Connect
 
 class Customer {
 	
@@ -16,72 +19,151 @@ class Customer {
 	
 	public Customer() {
 		Customer_ID = 0;
+		Customer_Name="";
+		Customer_Address="";
+		phone_No=0;
 	}
     
 	
-	public void AddCustomer(long ID, String Name, String Address, long PhoneNO) {
-		//Conect to database via JDBC
-		//Check if customer already exists
-			//if yes
-				//retrieve back to login page with msg "Customer already exists"
-			//if no
-				//continue with below function
-		 
-		Customer_ID = ID;
-		Customer_Name = Name;
-		Customer_Address = Address;
-		phone_No = PhoneNO;
+	public void AddCustomer(long c_ID, String Name, String Address, long PhoneNO) {
 		
-		//add info to database
+		//connect to database
+		String Conn_URL = "";
+    		String Username = "";
+    		String Password = "";
+    	
+    		DB_Connect Conn = new DB_Connect();
+
+			Connection con = Conn.Connect(Conn_URL,Username,Password);
+		
+			String SQL_Query = ""; // create the add query as pr the database 
+		
+			Customer_ID = c_ID;
+			Customer_Name = Name;
+			Customer_Address = Address;
+			phone_No = PhoneNO;
+		
+			ResultSet RR = Conn.Run_Query(SQL_Query);
  
 	}
-	/*
-	//To Validate customer login
-	public void validate(long ID , String password){
-		 //Conect to database via JDBC
-		 //check for valid info
-		 	if ID matched in database but password doesn't
-				//retrieve with message "Wrong password"
-			
-			if both ID and password matched in database
-				//login the customer in the system
-				
-			else 
-				//retrieve with msg "Customer doesn't exist"
-	}
-	*/
 	
-	public void EditCustomer(long ID, String Name, String Address, long PhoneNO) {
+	static int find_ID(int Customer_ID) {
+    	
+		// need to fill this befour use 
+		String Conn_URL = "";
+		String Username = "";
+		String Password = "";
+
+		DB_Connect Conn = new DB_Connect();
+
+			Connection con = Conn.Connect(Conn_URL,Username,Password);
+
+			String SQL_Query = ""; // create the search query as pr the database
+
+			try {
+				ResultSet RR = Conn.Run_Query(SQL_Query);
+				return 1:
+			}
+			catch(Exception e) {
+				return 0;
+			}
+	} 
+	
+	//To Validate customer login
+	public void validate(long c_ID , String password){
+	
+		int var = find_id(c_ID);
+    	//if id found in database
+		if (var) {
+			 //Conect to database via JDBC
+			String Conn_URL = "";
+			String Username = "";
+			String Password = "";
+
+			DB_Connect Conn = new DB_Connect();
+
+				Connection con = Conn.Connect(Conn_URL,Username,Password);
+
+			try {
+				ResultSet RR = Conn.Run_Query(SQL_Query);
+				return 1:
+			}
+
+			catch(Exception e) {
+				return 0;
+			}
+		}
+
+		//id not found in DB	
+		else {
+				return -1;
+		}
+    	}
+	
+	
+	public void EditCustomer(long c_ID, String Name, String Address, long PhoneNO) {
 		
-		 //Conect to database via JDBC
-				//let customer edit the info
-				//update in database
-		
-		Customer_ID = ID;
-		Customer_Name = Name;
-		Customer_Address = Address;
-		phone_No = PhoneNO;
- 
+		 nt var = find_id(c_ID);
+    	
+		if (var) {
+
+			// need to fill this befour use 
+			String Conn_URL = "";
+			String Username = "";
+			String Password = "";
+
+			DB_Connect Conn = new DB_Connect();
+
+			Connection con = Conn.Connect(Conn_URL,Username,Password);
+
+			String SQL_Query = ""; // create the edit query as pr the database 
+
+			try {
+				ResultSet RR = Conn.Run_Query(SQL_Query);
+				return 1:
+			}
+			catch(Exception e) {
+				return 0;
+			}
+		}
+
+		else {
+				return -1;
+		}
+	   
 	}
 	 
-	public void DeleteCustomer(long ID) {
+	public void DeleteCustomer(long c_ID) {
 		
-		//Conect to database via JDBC
-		//Check if customer exists
-			//delete the customer from database
-			//update database
-			
-		Customer_ID = ID;
-		
-		Customer_ID = 0;
-		Customer_Name = "";
-		Customer_Address =  "";
-		phone_No = 0;
+		int var = find_id(c_ID);
+    	
+		if (var) {
 
+			// need to fill this befour use 
+			String Conn_URL = "";
+			String Username = "";
+			String Password = "";
+
+			DB_Connect Conn = new DB_Connect();
+
+			Connection con = Conn.Connect(Conn_URL,Username,Password);
+
+			String SQL_Query = ""; // create the delete query as pr the database 
+
+			try {
+				ResultSet RR = Conn.Run_Query(SQL_Query);
+				return 1:
+			}
+			catch(Exception e) {
+				return 0;
+			}
+		}
+			
+		else {
+				return -1;
+		}
 	}
 	
-	
-
 }
 
 
