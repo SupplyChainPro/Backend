@@ -2,12 +2,11 @@ package IN_system;
 package DB_Utilities:
 
 import java.sql.*;
-import Stock 
-import BD_Connect
-
-// Import check_stock_avl from Stock  
+import Stock;
+import MyDB;
+ 
 public class Order{
-	
+
     int Order_ID;
     int Product_ID;
     int Quantity;
@@ -25,123 +24,214 @@ public class Order{
         Product_ID = 0;
         Quantity = 0;
     }
- 
+
+
     public int Add_order(int o_ID,int c_ID,String c_name, float a, String o_date,int p_ID,int Quan){
+
+    	/* return error codes :
+    	 * 	-2 : error in SQL query 
+    	 * 	-1 : Stock not avilable 
+    	 * 	 0 : error in connection 
+    	 * 	 1 : Success 
+    	 */
+	    Stock Order_stock = new Stock();
+
+	    Boolen var = Order_stock.get_stock(p_ID);
+	     
+
+	    if (var) {
+				MyDB DB = new MYDB();
+
+				String SQL_Query = "";
+
+				try {
+
+					ResultSet Results = DB.Execute(SQL_Query);
+
+					if(Results == null ){
+						return -2;
+					}
+
+					return 1;
+
+				}
+				catch(Exception e) {
+
+					return 0;
+				}
+				
+			}
+			else {
+
+				return -1;
+			}
+
+
+
+	    }
+	
+	    static int find_ID(int order_ID) {
+	    	/* return error codes :
+	    	 * 	-1 : error in SQL query 
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
+	
+				MyDB DB = new MYDB();
+	
+				String SQL_Query = "";
+	
+				try {
+	
+					ResultSet Results = DB.Execute(SQL_Query);
+	
+					if(Results == null ){
+						return -1;
+					}
+	
+					return 1;
+	
+				}
+				catch(Exception e) {
+	
+					return 0;
+				}
+	
+	
+	    }
+	
+	    public void Edit_order(int o_ID,int Product_ID,int c_ID,String c_name, float a, String o_date,int Quantity ){
+	    	/* return error codes :
+	    	 * 	-2 : error in SQL query
+	    	 * 	-1 : Order not found  
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
+	
+	    	int var = find_id(o_ID);
+	
+	    	if (var) {
+	
+					MyDB DB = new MYDB();
+	
+					String SQL_Query = "";
+	
+					try {
+	
+						ResultSet Results = DB.Execute(SQL_Query);
+	
+						if(Results == null ){
+							return -2;
+						}
+	
+						return 1;
+	
+					}
+					catch(Exception e) {
+	
+						return 0;
+					}
+					
+			}
+	    	else {
+	    			return -1;
+	    	}
+	    } 
+	
+	    public int Cancel_order(int ID){
+	    	
+	    	/* return error codes :
+	    	 * 	-2 : error in SQL query
+	    	 * 	-1 : Order not found  
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
+			
+	
+	    	int var = find_id(o_ID);
+	
+			if (var) {
+	
+						MyDB DB = new MYDB();
+	
+						String SQL_Query = "";
+	
+						try {
+	
+							ResultSet Results = DB.Execute(SQL_Query);
+	
+							if(Results == null ){
+								return -2;
+							}
+	
+							return 1;
+	
+						}
+						catch(Exception e) {
+	
+							return 0;
+						}
+						
+					}
+	
+	    	else {
+	    			return -1;
+	    		}
+	
+	    }
 	    
-    Stock Order_stock = new Stock(Product_ID);
-    
-    boolen var = Order_stock.Get_Stock_avl(Quan);
-    
-    if (var) {
-    	
-    	// need to fill this befour use 
-    	String Conn_URL = "";
-    	String Username = "";
-    	String Password = "";
-    	
-    	DB_Connect Conn = new DB_Connect();
-
-		Connection con = Conn.Connect(Conn_URL,Username,Password);
-		
-		String SQL_Query = ""; // create the add query as pr the database 
-		
-		try {
-			ResultSet RR = Conn.Run_Query(SQL_Query);
-			return 1:
-		}
-		catch(Exception e) {
-			return 0;
-		}
-	else {
-			return -1;
-		}
-    	
+	    public int Read_order(int ID) {
+	    	
+	    	/* return error codes :  ( As of now )
+	    	 * 	-2 : error in SQL query
+	    	 * 	-1 : Order not found  
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
+			
 	
+	    	int var = find_id(o_ID);
 	
-    }
-    
-    static int find_ID(int order_ID) {
-    	
-    	// need to fill this befour use 
-    	String Conn_URL = "";
-    	String Username = "";
-    	String Password = "";
-    	
-    	DB_Connect Conn = new DB_Connect();
+			if (var) {
+	
+						MyDB DB = new MYDB();
+	
+						String SQL_Query = "";
+	
+						try {
+	
+							ResultSet Results = DB.Execute(SQL_Query);
+	
+							if(Results == null ){
+								return -2;
+							}
+							
+							while( Results.next()) {
+								 
+								   customer_name = rs.getString("Customer_name"));
+								   /*
+								    * needs to add the database feilds in to this 
+								    */
+								
+								   
+								} 
+							 // type cast all the values in to String
+							 // and return the array_list of the strings as the output 
+	
+							return 1; // modify the result statement 
+	
+						}
+						catch(Exception e) {
+	
+							return 0;
+						}
+						
+					}
+	
+	    	else {
+	    			return -1;
+	    		}
+	
+	    }
 
-		Connection con = Conn.Connect(Conn_URL,Username,Password);
-		
-		String SQL_Query = ""; // create the add query as pr the database
-		
-		try {
-			ResultSet RR = Conn.Run_Query(SQL_Query);
-			return 1:
-		}
-		catch(Exception e) {
-			return 0;
-		}
-		
-    	
-    } 
-    	
-    }
-
-    public void Edit_order(int o_ID,int Product_ID,int c_ID,String c_name, float a, String o_date,int Quantity ){
-      
-    	int var = find_id(o_ID);
-    	
-    	if (var) {
-        	
-        	// need to fill this befour use 
-        	String Conn_URL = "";
-        	String Username = "";
-        	String Password = "";
-        	
-        	DB_Connect Conn = new DB_Connect();
-
-    		Connection con = Conn.Connect(Conn_URL,Username,Password);
-    		
-    		String SQL_Query = ""; // create the edit query as pr the database 
-    		
-    		try {
-    			ResultSet RR = Conn.Run_Query(SQL_Query);
-    			return 1:
-    		}
-    		catch(Exception e) {
-    			return 0;
-    		}
-    	else {
-    			return -1;
-    		}
-    }
-
-    public void Cancel_order(int ID){
-    	
-    	int var = find_id(o_ID);
-    	
-    	if (var) {
-        	
-        	// need to fill this befour use 
-        	String Conn_URL = "";
-        	String Username = "";
-        	String Password = "";
-        	
-        	DB_Connect Conn = new DB_Connect();
-
-    		Connection con = Conn.Connect(Conn_URL,Username,Password);
-    		
-    		String SQL_Query = ""; // create the cancle query as pr the database 
-    		
-    		try {
-    			ResultSet RR = Conn.Run_Query(SQL_Query);
-    			return 1:
-    		}
-    		catch(Exception e) {
-    			return 0;
-    		}
-    	else {
-    			return -1;
-    		}
-    	
-    }
 }
