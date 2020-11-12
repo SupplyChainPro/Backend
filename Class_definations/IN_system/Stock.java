@@ -1,50 +1,148 @@
 package IN_system;
 // import Product 
 
+import java.sql.ResultSet;
+
 public class Stock{
 	
 	int Product_Id;
-	int Quantity;
+ 
 	int Supplier_Id;
 	
 	Stock(){
 		Product_Id = 0;
-		Quantity = 0;
 		Supplier_Id = 0;
 	}
 	
-	public Stock(int pid , int quan , int sid){
-		Product_Id = pid;
-		Quantity = quan;
-		Supplier_Id = sid;
+	public int get_stock(int pid) {
 		
-		 
-	}
-	/* Check_Stock_Avl(Product_ID) -- > New function 
-	{ connect to the JDBC 
-		Check the Stock Count of the Product == Product_ID
-		if count == 0 : 
-			rturn -1
-		else :
-			return Stock_count 
-	}
-	
+		MyDB DB = new MYDB();
+		
+		int Quantity;
+		
+		String SQL_Query = "";
 
-	Add_Stock(int pid , int quan , int sid){
-		 connect to the JDBC 
-			Create new Data for supplier 
-			}
-	Update_stock ( int pid , int quan , int sid ) {
-		   connect to the JDBC 
-		   	Upadate data
+		try {
+
+			ResultSet Results = DB.Execute(SQL_Query);
+
+			if(Results == null ){
+				return -1;
 			}
 			
-	
-	public void showData(Supplier_ID) {
-		 connect to the JDBC 
-			  Retrive all data from the database with Supplier_ID == Supplier_ID 
-		
-		System.out.println("\n"+Product_Id+" \t\t\t "+Quantity);
-		
+			while( Results.next() ) {
+				Quantity  = rs.getInt("quantity));
+			}
+			
+			
+
+			return Quantity;
+
+		}
+		catch(Exception e) {
+
+			return 0;
+		}
 	}
-}
+	
+	public int New_Stock(int pid , int quan , int sid){
+		 
+		/* return error codes :
+    	 * 	-1 : error in SQL query
+    	 * 	 0 : error in connection 
+    	 * 	 1 : Success 
+    	 */
+
+	     
+		MyDB DB = new MYDB();
+
+		String SQL_Query = "";
+
+		try {
+
+			ResultSet Results = DB.Execute(SQL_Query);
+
+			if(Results == null ){
+				return -1;
+			}
+
+			return 1;
+
+		}
+		catch(Exception e) {
+
+			return 0;
+		}
+				
+	}
+	
+	public int edit_Stock(int pid , int quan , int sid){
+		
+		// Directly overwride the values 
+		 
+		/* return error codes :
+    	 * 	-1 : error in SQL query
+    	 * 	 0 : error in connection 
+    	 * 	 1 : Success 
+    	 */
+
+	     
+		MyDB DB = new MYDB();
+
+		String SQL_Query = "";
+
+		try {
+
+			ResultSet Results = DB.Execute(SQL_Query);
+
+			if(Results == null ){
+				return -1;
+			}
+
+			return 1;
+
+		}
+		catch(Exception e) {
+
+			return 0;
+		}
+				
+	}
+	
+	public int delete_Stock(int pid , int sid){
+		 
+		/* return error codes :
+    	 * 	-1 : error in SQL query
+    	 * 	 0 : error in connection 
+    	 * 	 1 : Success 
+    	 */
+
+	     
+		MyDB DB = new MYDB();
+
+		String SQL_Query = "";
+
+		try {
+
+			ResultSet Results = DB.Execute(SQL_Query);
+
+			if(Results == null ){
+				return -1;
+			}
+
+			return 1;
+
+		}
+		catch(Exception e) {
+
+			return 0;
+		}
+				
+	}
+	
+		 
+
+
+		 
+	}
+ 
