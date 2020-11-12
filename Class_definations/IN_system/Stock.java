@@ -31,7 +31,7 @@ public class Stock{
 			}
 			
 			while( Results.next() ) {
-				Quantity  = rs.getInt("quantity));
+				Quantity  = rs.getInt("quantity"));
 			}
 			
 			
