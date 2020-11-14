@@ -2,7 +2,7 @@ package OUT_system;
 package DB_Utilities:
 
 import java.sql.*; 
-import DB_Connect
+import MyDB;
 
 class Customer {
 	
