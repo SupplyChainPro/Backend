@@ -2,7 +2,7 @@ package OUT_system;
 package DB_Utilities:
 
 import java.sql.*; 
-import DB_Connect
+import MyDB;
 
 class Supplier {
 	
@@ -27,72 +27,88 @@ class Supplier {
 		
 		public int AddSupplier(long s_ID, String Name, String Address, long PhoneNO) {
 			//connect to database
-			String Conn_URL = "";
-			String Username = "";
-			String Password = "";
+			MyDB DB = new MYDB();
 
-			DB_Connect Conn = new DB_Connect();
+				String SQL_Query = "";
 
-				Connection con = Conn.Connect(Conn_URL,Username,Pass_ID)
-
-				String SQL_Query = ""; // create the add query as pr the database 
 			
 				Supplier_ID = s_ID;
 				Supplier_Name = Name;
 				Supplier_Address = Address;
 				phone_No = PhoneNO;
 				
-			ResultSet RR = Conn.Run_Query(SQL_Query);
+			ResultSet Results = DB.Execute(SQL_Query);
 	 
 		}
 		
 		static int find_ID(int Supplier_ID) {
     	
 			// need to fill this befour use 
-			String Conn_URL = "";
-			String Username = "";
-			String Password = "";
-
-			DB_Connect Conn = new DB_Connect();
-
-				Connection con = Conn.Connect(Conn_URL,Username,Password);
-
-				String SQL_Query = ""; // create the search query as pr the database
-
+			/* return error codes :
+	    	 * 	-1 : error in SQL query 
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
+	
+				MyDB DB = new MYDB();
+	
+				String SQL_Query = "";
+	
 				try {
-					ResultSet RR = Conn.Run_Query(SQL_Query);
-					return 1:
+	
+					ResultSet Results = DB.Execute(SQL_Query);
+	
+					if(Results == null ){
+						return -1;
+					}
+	
+					return 1;
+	
 				}
 				catch(Exception e) {
+	
 					return 0;
 				}
+	
+	
 		} 
 		
 		//To Validate supplier login
 		public int validate(long s_ID , String password){
+	
+			/* return error codes :
+	    	 * 	-1 : error in SQL query 
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
 	
 			int var = find_id(s_ID);
 			
 			//if id found in database
 			if (var) {
 				 //Conect to database via JDBC
-				String Conn_URL = "";
-				String Username = "";
-				String Password = "";
-
-				DB_Connect Conn = new DB_Connect();
-
-					Connection con = Conn.Connect(Conn_URL,Username,Password);
-
+				
+				MyDB DB = new MYDB();
+	
+				String SQL_Query = "";
+	
 				try {
-					ResultSet RR = Conn.Run_Query(SQL_Query);
-					return 1:
+	
+					ResultSet Results = DB.Execute(SQL_Query);
+	
+					if(Results == null ){
+						return -1;
+					}
+	
+					return 1;
+	
 				}
-
 				catch(Exception e) {
+	
 					return 0;
 				}
-			}
+	
+	
 
 			//id not found in DB	
 			else {
@@ -102,30 +118,41 @@ class Supplier {
 		
 		public int EditSupplier(long s_ID, String Name, String Address, long PhoneNO) {
 			
-			  int var = find_id(s_ID);
-    	
+			  /* return error codes :
+	    	 * 	-1 : error in SQL query 
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
+	
+			int var = find_id(s_ID);
+			
+			//if id found in database
 			if (var) {
-
-				// need to fill this befour use 
-				String Conn_URL = "";
-				String Username = "";
-				String Password = "";
-
-				DB_Connect Conn = new DB_Connect();
-
-				Connection con = Conn.Connect(Conn_URL,Username,Password);
-
-				String SQL_Query = ""; // create the edit query as pr the database 
-
+				 //Conect to database via JDBC
+				
+				MyDB DB = new MYDB();
+	
+				String SQL_Query = "";
+	
 				try {
-					ResultSet RR = Conn.Run_Query(SQL_Query);
-					return 1:
+	
+					ResultSet Results = DB.Execute(SQL_Query);
+	
+					if(Results == null ){
+						return -1;
+					}
+	
+					return 1;
+	
 				}
 				catch(Exception e) {
+	
 					return 0;
 				}
-			}
+	
+	
 
+			//id not found in DB	
 			else {
 					return -1;
 			}
@@ -134,30 +161,41 @@ class Supplier {
 		
 		public int DeleteSupplier(long s_ID) {
 			
+			/* return error codes :
+	    	 * 	-1 : error in SQL query 
+	    	 * 	 0 : error in connection 
+	    	 * 	 1 : Success
+	    	 */
+	
 			int var = find_id(s_ID);
-    	
+			
+			//if id found in database
 			if (var) {
-
-				// need to fill this befour use 
-				String Conn_URL = "";
-				String Username = "";
-				String Password = "";
-
-				DB_Connect Conn = new DB_Connect();
-
-				Connection con = Conn.Connect(Conn_URL,Username,Password);
-
-				String SQL_Query = ""; // create the delete query as pr the database 
-
+				 //Conect to database via JDBC
+				
+				MyDB DB = new MYDB();
+	
+				String SQL_Query = "";
+	
 				try {
-					ResultSet RR = Conn.Run_Query(SQL_Query);
-					return 1:
+	
+					ResultSet Results = DB.Execute(SQL_Query);
+	
+					if(Results == null ){
+						return -1;
+					}
+	
+					return 1;
+	
 				}
 				catch(Exception e) {
+	
 					return 0;
 				}
-			}
+	
+	
 
+			//id not found in DB	
 			else {
 					return -1;
 			}
